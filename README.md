@@ -75,7 +75,7 @@ SERVER_DOMAIN=abc.eu-central-1.clawcloudrun.com
 UDP_PORT=20000
 PASSWORD=a6b091a6-679b-47d1-bc72-a4ac78ba2778
 ```
-✅ 设置完成后即可点击部署。
+##✅ 设置完成后即可点击部署。
 ---
 6. **Pod List（客户端连接配置）**  
 
