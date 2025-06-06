@@ -23,13 +23,11 @@
 - 输出客户端连接字符串，方便快速配置客户端
 
 ---
-
 ## 📦 Docker 镜像
 
 **镜像地址**：[mc838/claw-hy2-agent](https://hub.docker.com/r/mc838/claw-hy2-agent)
 
 ---
-
 ## 🛠️ 环境变量说明
 
 | 环境变量            | 说明                         | 示例值                                         |
@@ -44,7 +42,6 @@
 | `PASSWORD`      | 客户端密钥，用于身份验证） | `a6b091a6-679b-47d1-bc72-a4ac78ba2778` |
 
 ---
-
 ## 1. 通过 claw.cloud 部署
 
 1. **Application Name（应用程序名称）**  
@@ -84,6 +81,7 @@ PASSWORD=a6b091a6-679b-47d1-bc72-a4ac78ba2778
 
 ![示例输出](./ui.png)
 
+---
 ## 鸣谢
 
 - [Hysteria2](https://github.com/HyNetwork/hysteria)
