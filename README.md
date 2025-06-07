@@ -1,5 +1,5 @@
 
-# 这是一个用于claw.cloud部署 [Hysteria2 + Nezha Agent](https://github.com/vipmc838/claw-hy2-agent) 的轻量级 Docker 镜像。
+# 这是一个用于claw.cloud部署代理 [Hysteria2 + Nezha Agent](https://github.com/vipmc838/claw-hy2-agent) 的轻量级 Docker 镜像。
 
 
 ![Docker 镜像大小](https://img.shields.io/docker/image-size/mc838/claw-hy2-agent/latest)
