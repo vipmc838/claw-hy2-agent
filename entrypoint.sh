@@ -31,6 +31,9 @@ uuid: ${NZ_UUID}
 client_secret: ${NZ_CLIENT_SECRET}
 EOF
 
+# 启动 Nezha Agent，作为主进程（PID 1）
+./nezha-agent --config config.yaml
+
 echo "✅ 正在启动 Hysteria2，配置如下："
 echo "SERVER_DOMAIN: ${SERVER_DOMAIN}"
 echo "UDP_PORT: ${UDP_PORT}"
@@ -68,8 +71,5 @@ echo "🎯 客户端连接配置（请将端口替换为爪云分配的外网 UD
 echo "hy2://${PASSWORD}@${SERVER_DOMAIN}:${UDP_PORT}?sni=bing.com&insecure=1#claw.cloud-hy2-${COUNTRY_CODE}"
 echo "------------------------------------------------------------------------"
 
-# 启动 Nezha Agent，作为主进程（PID 1）
-nohup ./nezha-agent --config /app/config.yaml >/dev/null 2>&1
-
-# 阻塞命令
+# 等待所有后台进程
 wait
