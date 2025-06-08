@@ -32,7 +32,8 @@ client_secret: ${NZ_CLIENT_SECRET}
 EOF
 
 echo "✅ 正在启动探针..."
-./nezha-agent --config config.yaml
+./nezha-agent --config /app/config.yaml &
+sleep 3
 
 echo "✅ 正在启动 Hysteria2，配置如下："
 echo "SERVER_DOMAIN: ${SERVER_DOMAIN}"
