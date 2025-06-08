@@ -32,7 +32,7 @@ RUN set -eux; \
     fi; \
     AGENT_URL=$(curl -s $API_URL | jq -r '.assets[] | select(.name | endswith("linux_amd64.zip")) | .browser_download_url'); \
     if [ -z "$AGENT_URL" ] || [ "$AGENT_URL" = "null" ]; then \
-        echo "❌ 获取 Agent 下载地址失败，退出"; exit 1; \
+        echo "获取 Agent 下载地址失败，退出"; exit 1; \
     fi; \
     wget -O nezha-agent.zip "$AGENT_URL"; \
     unzip nezha-agent.zip; \
