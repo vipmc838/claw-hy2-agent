@@ -3,10 +3,8 @@ set -e
 
 # 自动生成 UUID（如果未提供）
 if [ -z "$NZ_UUID" ]; then
-  NZ_UUID=$(cat /proc/sys/kernel/random/uuid | tr -d '-')
+  NZ_UUID=$(cat /proc/sys/kernel/random/uuid)
   echo "⚠️ 未提供 NZ_UUID，已自动生成：$NZ_UUID"
-else
-  NZ_UUID=$(echo "$NZ_UUID" | tr -d '-')
 fi
 
 echo "✅ 探针配置如下："
