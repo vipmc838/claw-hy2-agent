@@ -83,7 +83,7 @@ PASSWORD=a6b091a6-679b-47d1-bc72-a4ac78ba2778
 ## 鸣谢
 
 - [Hysteria2](https://github.com/HyNetwork/hysteria)
-- [哪吒监控 Agent](https://github.com/naibahq/agent)
+- [哪吒监控 Agent](https://github.com/nezhahq/agent)
 
 ---
 
