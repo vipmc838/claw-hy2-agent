@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-echo "✅ 正在启动 Nezha Agent，配置如下："
+echo "✅ 探针配置如下："
 echo "NZ_SERVER: ${NZ_SERVER}"
 echo "NZ_UUID: ${NZ_UUID}"
 echo "NZ_CLIENT_SECRET: ${NZ_CLIENT_SECRET}"
@@ -31,7 +31,7 @@ uuid: ${NZ_UUID}
 client_secret: ${NZ_CLIENT_SECRET}
 EOF
 
-# 启动 Nezha Agent，作为主进程（PID 1）
+echo "✅ 正在启动探针..."
 ./nezha-agent --config config.yaml
 
 echo "✅ 正在启动 Hysteria2，配置如下："
@@ -59,7 +59,7 @@ masquerade:
 EOF
 
 # 启动 Hysteria2 到后台
-/usr/local/bin/hysteria server -c /etc/hysteria/config.yaml &
+exec /usr/local/bin/hysteria server -c /etc/hysteria/config.yaml &
 
 # 获取公网 IP 和国家代码
 SERVER_IP=$(curl -s https://api.ipify.org)
