@@ -31,7 +31,7 @@
 | 环境变量            | 说明                         | 示例值                                         |
 |---------------------|------------------------------|------------------------------------------------|
 | `NZ_SERVER`         | 哪吒面板地址（含端口）       | `abc.com:443`                                  |
-| `NZ_UUID`           | Agent 的唯一标识 UUID 可选，默认自动生成 UUID        | `a6b091a6-679b-47d1-bc72-a4ac78ba2888`       |
+| `NZ_UUID`           | 探针的唯一标识UUID（可选，默认自动生成）       | `a6b091a6-679b-47d1-bc72-a4ac78ba2888`       |
 | `NZ_CLIENT_SECRET`  | 面板端密钥，用于身份验证     | `4z0HWnSGJ8KFtKOlfJxSk8C3F8PIJ888`            |
 | `NZ_TLS`            | 是否启用 TLS（true/false）   | `true`                                         |
 | `DASHBOARD_VERSION` | 指定版本（可选，默认最新）   | `v1.12.2`                                      |
