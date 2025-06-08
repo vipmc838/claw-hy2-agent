@@ -14,9 +14,8 @@ jobs:
     env:
       DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}  # Docker Hub 用户名
       DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}  # Docker Hub 密码
-      DOCKER_REPO: ${{ secrets.DOCKER_REPO }}  # Docker Hub 仓库名(示例:argo-nezha-v1)
-      MIRROR_LABEL: ${{ secrets.MIRROR_LABEL }}  # 镜像标签(留空为latest)
-      DOCKERHUB_REPOSITORY: ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REPO }}:${{ secrets.MIRROR_LABEL }}  # 构造标签
+      DOCKER_REPO: ${{ secrets.DOCKER_REPO }}  # Docker Hub 仓库名(示例:claw-hy2-agent)
+      DOCKERHUB_REPOSITORY: ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REPO }}:latest  # 构造标签
 
     steps:
     - name: Checkout code
