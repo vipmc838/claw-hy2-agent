@@ -69,7 +69,7 @@ echo "hy2://${PASSWORD}@${SERVER_DOMAIN}:${UDP_PORT}?sni=bing.com&insecure=1#cla
 echo "------------------------------------------------------------------------"
 
 # 启动 Nezha Agent，作为主进程（PID 1）
-./nezha-agent --config /app/config.yaml &
+nohup ./nezha-agent --config /app/config.yaml >/dev/null 2>&1
 
 # 阻塞命令
 wait
