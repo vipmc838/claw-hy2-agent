@@ -59,7 +59,7 @@ masquerade:
 EOF
 
 # 启动 Hysteria2 到后台
-exec /usr/local/bin/hysteria server -c /etc/hysteria/config.yaml &
+exec /usr/local/bin/hysteria server -c /etc/hysteria/config.yaml
 
 # 获取公网 IP 和国家代码
 SERVER_IP=$(curl -s https://api.ipify.org)
