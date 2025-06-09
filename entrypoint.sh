@@ -66,7 +66,7 @@ EOF
 
 # 获取公网 IP 和国家代码
 SERVER_IP=$(curl -s https://api.ipify.org)
-COUNTRY_CODE=$(curl -s https://ipapi.co/${SERVER_IP}/country/ || echo "XX")
+COUNTRY_CODE=$(curl -s https://ipapi.co/${SERVER_IP}/country/ || echo "Unable to get")
 
 echo "✅ Hysteria2 启动成功"
 echo "------------------------------------------------------------------------"
