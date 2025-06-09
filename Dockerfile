@@ -1,3 +1,6 @@
+FROM alpine:latest
+WORKDIR /app
+
 # 设置环境变量
 ENV UDP_PORT=20000
 ARG DASHBOARD_VERSION=latest
