@@ -9,10 +9,9 @@ RUN wget -q -O /usr/local/bin/hysteria https://download.hysteria.network/app/lat
     chmod +x /usr/local/bin/hysteria
 
 # 自签 TLS 证书
-RUN openssl req -x509 -nodes -newkey ec:<(openssl ecparam -name prime256v1) \
-    -keyout /etc/hysteria/server.key \
-    -out /etc/hysteria/server.crt \
-    -subj "/CN=bing.com" -days 36500
+RUN openssl ecparam -name prime256v1 -genkey -noout -out /etc/hysteria/server.key && \
+    openssl req -x509 -new -nodes -key /etc/hysteria/server.key \
+    -out /etc/hysteria/server.crt -subj "/CN=bing.com" -days 36500
 
 # 拷贝 entrypoint 启动脚本
 COPY entrypoint.sh /entrypoint.sh
