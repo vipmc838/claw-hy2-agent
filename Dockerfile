@@ -1,10 +1,7 @@
-FROM alpine:latest
-WORKDIR /app
-
 # 设置环境变量
 ENV UDP_PORT=20000
 ARG DASHBOARD_VERSION=latest
-ENV DASHBOARD_VERSION=${DASHBOARD_VERSION:-latest}
+ENV DASHBOARD_VERSION=${DASHBOARD_VERSION}
 
 # 安装依赖 & 创建必要目录
 RUN apk update && \
@@ -12,21 +9,22 @@ RUN apk update && \
     mkdir -p /etc/hysteria
 
 # 下载并解压 nezha-agent
-RUN set -eux; \
+RUN ARCH=linux_amd64 && \
     if [ "$DASHBOARD_VERSION" = "latest" ]; then \
-        API_URL="https://gitee.com/api/v5/repos/naibahq/agent/releases/latest"; \
+        echo "未指定 DASHBOARD_VERSION，开始获取最新版本号..." && \
+        DASHBOARD_VERSION=$(curl -s https://api.github.com/repos/nezhahq/agent/releases/latest | \
+            grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/') && \
+        echo "最新版本号为: $DASHBOARD_VERSION"; \
     else \
-        API_URL="https://gitee.com/api/v5/repos/naibahq/agent/releases/tags/$DASHBOARD_VERSION"; \
-    fi; \
-    AGENT_URL=$(curl -s $API_URL | jq -r '.assets[] | select(.name | endswith("linux_amd64.zip")) | .browser_download_url'); \
-    if [ -z "$AGENT_URL" ] || [ "$AGENT_URL" = "null" ]; then \
-        echo "获取 Agent 下载地址失败，退出"; exit 1; \
-    fi; \
-    wget -O nezha-agent.zip "$AGENT_URL"; \
-    unzip nezha-agent.zip; \
-    rm nezha-agent.zip; \
-    chmod +x nezha-agent
-
+        echo "使用指定版本号: $DASHBOARD_VERSION"; \
+    fi && \
+    FILE="nezha-agent_${ARCH}.zip" && \
+    URL="https://github.com/nezhahq/agent/releases/download/${DASHBOARD_VERSION}/${FILE}" && \
+    wget -q -O "$FILE" "$URL" && \
+    unzip -qo "$FILE" && \
+    chmod +x nezha-agent && \
+    rm -f "$FILE"
+    
 # 下载 hysteria2 主程序
 RUN wget -q -O /usr/local/bin/hysteria https://download.hysteria.network/app/latest/hysteria-linux-amd64 && \
     chmod +x /usr/local/bin/hysteria
