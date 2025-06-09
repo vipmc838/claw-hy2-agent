@@ -37,7 +37,6 @@ chmod +x nezha-agent
 
 echo "探针下载完成"
 
-
 # 自动生成 UUID（如果未提供）
 if [ -z "$NZ_UUID" ]; then
   NZ_UUID=$(cat /proc/sys/kernel/random/uuid)
