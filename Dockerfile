@@ -5,9 +5,7 @@ WORKDIR /app
 ENV SERVER_DOMAIN=example.clawcloudrun.com
 ENV UDP_PORT=5678
 ENV PASSWORD=your-uuid-password
-ARG DASHBOARD_VERSION=latest
-ENV DASHBOARD_VERSION=$DASHBOARD_VERSION
-
+ARG DASHBOARD_VERSION=${DASHBOARD_VERSION:-latest}
 # 安装依赖 & 创建必要目录
 RUN apk update && \
     apk add --no-cache curl wget openssl bash jq unzip ca-certificates && \
