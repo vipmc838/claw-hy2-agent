@@ -1,6 +1,43 @@
 #!/bin/bash
 set -e
 
+# 通过 GitHub API 获取探针下载地址
+ARCH="linux_amd64"
+
+# 判断是否传入 DASHBOARD_VERSION 参数
+# 如果没传，调用 GitHub API 获取最新版本号
+if [ -z "$DASHBOARD_VERSION" ]; then
+  echo "未指定 DASHBOARD_VERSION，开始获取最新版本号..."
+  DASHBOARD_VERSION=$(curl -s https://api.github.com/repos/nezhahq/agent/releases/latest | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
+  if [ -z "$DASHBOARD_VERSION" ]; then
+    echo "获取最新版本失败，退出"
+    exit 1
+  fi
+  echo "最新版本号为: $DASHBOARD_VERSION"
+else
+  echo "使用指定版本号: $DASHBOARD_VERSION"
+fi
+
+# 构造下载链接
+FILE="nezha-agent_${ARCH}.zip"
+URL="https://github.com/nezhahq/agent/releases/download/${DASHBOARD_VERSION}/${FILE}"
+
+wget -q -O "$FILE" "$URL"
+if [ $? -ne 0 ]; then
+  echo "下载失败 跳过"
+fi
+
+unzip -qo "$FILE"
+if [ $? -ne 0 ]; then
+  echo "解压失败，跳过继续执行"
+fi
+
+rm -f "$FILE"
+chmod +x nezha-agent
+
+echo "探针下载完成"
+
+
 # 自动生成 UUID（如果未提供）
 if [ -z "$NZ_UUID" ]; then
   NZ_UUID=$(cat /proc/sys/kernel/random/uuid)
