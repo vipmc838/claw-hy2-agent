@@ -6,6 +6,8 @@
 ![Docker 拉取次数](https://img.shields.io/docker/pulls/mc838/claw-hy2-agent)
 ![Nezha Agent License](https://img.shields.io/github/license/nezhahq/agent)
 ![Hysteria License](https://img.shields.io/github/license/HyNetwork/hysteria)
+
+# Claw.Cloud官网(GitHub注册送5美元地址)：https://console.run.claw.cloud/signin?link=M9P7GXP3M3W5
 ## 📦 项目版本说明
 - Hysteria2版本 ➡️[Hysteria2](https://github.com/vipmc838/claw-hy2)：基于 UDP 的高速代理，支持 TLS 加密与伪装。
 - Nezha Agent版本 ➡️[Nezha Agent](https://github.com/vipmc838/claw-agent)：哪吒监控客户端，连接至哪吒面板进行主机监控。
